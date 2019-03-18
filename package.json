@@ -1,0 +1,39 @@
+{
+  "name": "storyblok-migrate",
+  "version": "0.0.1",
+  "description": "Storyblok schema migrations",
+  "keywords": [
+    "migrate",
+    "schema",
+    "storyblok"
+  ],
+  "author": "Markus Oberlehner",
+  "homepage": "https://github.com/maoberlehner/storyblok-migrate",
+  "license": "MIT",
+  "scripts": {
+    "lint:scripts": "eslint --ignore-path .gitignore .",
+    "lint:scripts-md": "eslint --config .eslintrc-md.js --ext md --ignore-path .gitignore .",
+    "lint": "yarn run lint:scripts && yarn run lint:scripts-md"
+  },
+  "dependencies": {
+    "glob": "^7.1.3",
+    "storyblok-js-client": "^1.0.21"
+  },
+  "devDependencies": {
+    "@avalanche/eslint-config": "^3.0.0",
+    "eslint": "^5.15.2",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-markdown": "^1.0.0"
+  },
+  "main": "index.js",
+  "bin": {
+    "storyblok-migrate": "cli.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/maoberlehner/storyblok-migrate"
+  },
+  "bugs": {
+    "url": "https://github.com/maoberlehner/storyblok-migrate/issues"
+  }
+}

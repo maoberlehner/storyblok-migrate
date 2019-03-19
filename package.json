@@ -16,6 +16,8 @@
     "lint": "yarn run lint:scripts && yarn run lint:scripts-md"
   },
   "dependencies": {
+    "commander": "^2.19.0",
+    "enquirer": "^2.3.0",
     "glob": "^7.1.3",
     "storyblok-js-client": "^1.0.21"
   },

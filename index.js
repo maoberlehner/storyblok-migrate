@@ -31,10 +31,8 @@ function fetchStories(contentTypes, page) {
   });
 }
 
-const contentTypeComponents = discover.contentTypeComponents();
-const contentTypes = contentTypesFromComponents(contentTypeComponents);
-
-module.exports = async function runMigrations(page = 1) {
+module.exports = async function runMigrations({ components, page = 1 }) {
+  const contentTypes = contentTypesFromComponents(components);
   const { data, perPage, total } = await fetchStories(contentTypes, page);
   const pageCount = Math.ceil(total / perPage);
 
@@ -67,5 +65,5 @@ module.exports = async function runMigrations(page = 1) {
 
   if (page >= pageCount) return;
 
-  await runMigrations(page + 1);
+  await runMigrations({ components, page: page + 1 });
 };

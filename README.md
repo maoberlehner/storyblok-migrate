@@ -94,6 +94,8 @@ module.exports = {
 };
 ```
 
+**Run with parameters**
+
 ```json
 {
   "scripts": {
@@ -104,7 +106,15 @@ module.exports = {
 
 ```bash
 # Run all migrations.
-npm run migrate
+npm run migrate --content-migrations
+# Run migrations only for specific content types.
+npm run migrate --content-migrations --content-types article,product
+```
+
+**Run in UI mode**
+
+```bash
+npx storyblok-migrate
 ```
 
 ## Configuration

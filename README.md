@@ -94,27 +94,36 @@ module.exports = {
 };
 ```
 
+**Run in UI mode**
+
+When running `storyblok-migrate` in UI mode you'll be asked what migrations you want to run.
+
+```bash
+npx storyblok-migrate
+```
+
 **Run with parameters**
+
+Usually you want to run `storyblok-migrate` with paramters as part of your build process because it's not possible to use the UI mode there.
 
 ```json
 {
   "scripts": {
-    "migrate": "storyblok-migrate"
+    "migrate": "storyblok-migrate --content-migrations",
+    "build": "npm run migrate && webpack"
   }
 }
 ```
 
+You can also run `storyblok-migrate` manually with parameters.
+
 ```bash
 # Run all migrations.
-npm run migrate --content-migrations
+npx storyblok-migrate --content-migrations
 # Run migrations only for specific content types.
-npm run migrate --content-migrations --content-types article,product
-```
-
-**Run in UI mode**
-
-```bash
-npx storyblok-migrate
+npx storyblok-migrate --content-migrations --content-types article,product
+# Using shortcuts.
+npx storyblok-migrate -c -t article,product
 ```
 
 ## Configuration

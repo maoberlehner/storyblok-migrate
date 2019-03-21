@@ -153,6 +153,7 @@ module.exports  = {
 
 - Bidirectional synchronization of components
 - Migration versioning
+- Rollbacks
 
 ## About
 

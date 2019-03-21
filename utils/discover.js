@@ -3,15 +3,15 @@ const path = require(`path`);
 
 const config = require(`../config`);
 
-function findComponent() {
-  const directory = path.resolve(process.cwd(), config.componentDirectory);
+function findComponents(componentDirectory) {
+  const directory = path.resolve(process.cwd(), componentDirectory);
 
   return glob.sync(path.join(directory, `**`, `*.js`))
     // eslint-disable-next-line global-require, import/no-dynamic-require
     .map(file => require(path.resolve(directory, file)));
 }
 
-const components = findComponent();
+const components = findComponents(config.componentDirectory);
 
 function contentTypeComponents() {
   return components.filter(x => x.settings.root);

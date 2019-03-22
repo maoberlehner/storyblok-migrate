@@ -16,6 +16,7 @@ async function start() {
       `-t, --content-types <items>`,
       `comma separated list of components (technical names) which you want to migrate (default: all)`,
     )
+    .option(`--dry-run`, `see what would happen without applying the changes`)
     .parse(process.argv);
 
   if (commander.contentMigrations) {

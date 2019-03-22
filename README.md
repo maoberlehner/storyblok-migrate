@@ -7,13 +7,18 @@
 
 Storyblok schema migrations.
 
-**Warning:** this project is in a very early stage. Because of the nature of what this package is doing, it has the potential to destroy all your content. It is highly recommended to backup your Storyblok Space before using this. Use at your own risk.
+> **Warning:** this project is at a very early stage. Due to the nature of what this package does, it has the potential to destroy all your content. It is strongly recommended that you backup your Storyblok Space before use. Use at your own risk.
 
 ## Usage
 
+`storyblok-migrate` can be used either as a global or as a locally installed CLI tool or it can also be used programmatically. But it is recommended to use it as a local dependency of your project.
+
 ```bash
-npm install --save-dev storyblok-migrate
+# Install it as a local dependency of your project.
+npm install storyblok-migrate
 ```
+
+In the following example you can see a typical file tree of a Nuxt.js project. However, you can see that we have added an additional `storyblok` folder. This is the default directory where `storyblok-migrate` looks for component schema definition files. You can change the directory via [a configuration setting](#configuration).
 
 ```
 your-storyblok-project/
@@ -25,6 +30,12 @@ your-storyblok-project/
 │   └── image-slider.js
 └── ...
 ```
+
+### Schema definitions
+
+In the following two examples you can see how to structure schema definitions. You can read more about how to structure the `schema` part of the definition file and all the possible field types in [the official Storyblok API documentation](https://www.storyblok.com/docs/api/management#core-resources/components/possible-field-types).
+
+The `migrations` property is an optional array with functions you want to run on every migration. It is recommended to either add a condition to prevent a migration from running a second time after it has already done its job, or remove it completely when it is no longer needed. However, for documentation purposes, it is recommended to keep old migrations, but add a condition at the beginning to prevent them from running.
 
 ```js
 // storyblok/article.js
@@ -128,7 +139,7 @@ npx storyblok-migrate -c -t article,product
 
 ## Configuration
 
-Here you can see the default configuration. You must not check in your `oauthToken` into version control (especially if the repository is public)! Use environment variables instead.
+This is the default configuration. You must not check in your `oauthToken` into version control (especially if the repository is public)! Use environment variables instead.
 
 ```js
 // storyblok.config.js

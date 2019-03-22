@@ -52,6 +52,7 @@ module.exports = {
       delete content.headline;
     },
   ],
+  name: 'article',
   schema: {
     image: {
       component_whitelist: [metaImage],
@@ -69,7 +70,6 @@ module.exports = {
     nestable: false,
     root: true,
   },
-  technicalName: 'article',
 };
 ```
 
@@ -86,6 +86,7 @@ module.exports = {
       delete content.url;
     },
   ],
+  name: 'meta_image',
   schema: {
     alt: {
       pos: 10,
@@ -101,7 +102,6 @@ module.exports = {
     nestable: true,
     root: false,
   },
-  technicalName: 'meta_image',
 };
 ```
 

@@ -15,7 +15,7 @@ const api = new StoryblokClient({
 });
 
 function contentTypesFromComponents(components) {
-  return components.map(x => x.technicalName);
+  return components.map(x => x.name);
 }
 
 function fetchStories(contentTypes, page) {

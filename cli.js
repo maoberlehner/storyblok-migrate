@@ -21,7 +21,7 @@ async function start() {
 
   if (commander.contentMigrations) {
     const mappedComponents = commander.contentTypes
-      ? components.filter(x => commander.contentTypes.includes(x.technicalName))
+      ? components.filter(x => commander.contentTypes.includes(x.name))
       : components;
 
     runMigrations({ components: mappedComponents });
@@ -49,7 +49,7 @@ async function start() {
         if (value[0] === `All`) {
           return components;
         }
-        return components.filter(x => value.includes(x.technicalName));
+        return components.filter(x => value.includes(x.name));
       },
       type: `multiselect`,
     },

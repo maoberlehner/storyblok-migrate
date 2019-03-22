@@ -18,7 +18,7 @@ function contentTypeComponents() {
 }
 
 function componentByName(name) {
-  return components.find(x => x.technicalName === name);
+  return components.find(x => x.name === name);
 }
 
 module.exports = {

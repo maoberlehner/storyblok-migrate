@@ -14,7 +14,7 @@ async function start() {
     .option(`-c, --content-migrations`, `run content migrations`)
     .option(
       `-t, --content-types <items>`,
-      `comma separated list of components (technical names) which you want to migrate (default: all)`,
+      `comma separated list of content types which you want to migrate (default: all)`,
     )
     .option(`--dry-run`, `see what would happen without applying the changes`)
     .parse(process.argv);

@@ -55,7 +55,7 @@ module.exports = {
   name: 'article',
   schema: {
     image: {
-      component_whitelist: [metaImage],
+      component_whitelist: [metaImage.name],
       maximum: 1,
       pos: 10,
       restrict_components: true,

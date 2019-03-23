@@ -13,7 +13,7 @@ function contentTypesFromComponents(components) {
   return components.map(x => x.name);
 }
 
-module.exports = async function runMigrations({ components, page = 1 }) {
+async function runContentMigrations({ components, page = 1 }) {
   const contentTypes = contentTypesFromComponents(components);
   const { data, pageCount } = await storyService.list({ contentTypes, page });
 
@@ -46,5 +46,9 @@ module.exports = async function runMigrations({ components, page = 1 }) {
 
   if (page >= pageCount) return;
 
-  await runMigrations({ components, page: page + 1 });
+  await runContentMigrations({ components, page: page + 1 });
+}
+
+module.exports = {
+  runContentMigrations,
 };

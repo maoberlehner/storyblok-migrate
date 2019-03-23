@@ -2,11 +2,11 @@
 const { prompt } = require(`enquirer`);
 const commander = require(`commander`);
 
+const {
+  runContentMigrations,
+} = require(`./`);
 const { version } = require(`./package`);
 const discover = require(`./utils/discover`);
-const runMigrations = require(`./`);
-
-const components = discover.contentTypeComponents();
 
 async function start() {
   commander
@@ -19,12 +19,13 @@ async function start() {
     .option(`--dry-run`, `see what would happen without applying the changes`)
     .parse(process.argv);
 
-  if (commander.contentMigrations) {
-    const mappedComponents = commander.contentTypes
-      ? components.filter(x => commander.contentTypes.includes(x.name))
-      : components;
+  const contentTypeComponents = discover.contentTypeComponents();
 
-    runMigrations({ components: mappedComponents });
+  if (commander.contentMigrations) {
+    const filteredComponents = commander.contentTypes
+      ? contentTypeComponents.filter(x => commander.contentTypes.includes(x.name))
+      : contentTypeComponents;
+    runContentMigrations({ components: filteredComponents });
     return;
   }
 
@@ -38,18 +39,25 @@ async function start() {
       type: `toggle`,
     },
     {
-      choices: [
-        `All`,
-        ...components.map(x => x.displayName),
-      ],
-      initial: 0,
+      disabled: `No`,
+      enabled: `Yes`,
+      initial: 1,
+      message: `Migrate all content types?`,
+      name: `allContentTypes`,
+      skip() {
+        return !this.state.answers.contentMigrations;
+      },
+      type: `toggle`,
+    },
+    {
+      choices: contentTypeComponents.map(x => x.displayName),
       message: `Which content types do you want to migrate?`,
       name: `components`,
       result(value) {
-        if (value[0] === `All`) {
-          return components;
-        }
-        return components.filter(x => value.includes(x.name));
+        return contentTypeComponents.filter(x => value.includes(x.displayName));
+      },
+      skip() {
+        return this.state.answers.allContentTypes;
       },
       type: `multiselect`,
     },
@@ -69,8 +77,11 @@ async function start() {
     console.log(`Migration canceled.`);
   }
 
-  if (answers.migrateContent) {
-    runMigrations({ components: answers.components });
+  if (answers.contentMigrations) {
+    const filteredComponents = answers.allContentTypes
+      ? contentTypeComponents
+      : answers.components;
+    await runContentMigrations({ components: filteredComponents });
   }
 }
 

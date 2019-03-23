@@ -5,7 +5,7 @@
 [![Build Status](https://travis-ci.org/maoberlehner/storyblok-migrate.svg?branch=master)](https://travis-ci.org/maoberlehner/storyblok-migrate)
 [![GitHub stars](https://img.shields.io/github/stars/maoberlehner/storyblok-migrate.svg?style=social&label=Star)](https://github.com/maoberlehner/storyblok-migrate)
 
-Storyblok schema migrations.
+Storyblok component and content migrations.
 
 > **Warning:** this project is at a very early stage. Due to the nature of what this package does, it has the potential to destroy all your content. It is strongly recommended that you backup your Storyblok Space before use. Use at your own risk.
 
@@ -18,7 +18,7 @@ Storyblok schema migrations.
 npm install storyblok-migrate
 ```
 
-In the following example you can see a typical file tree of a Nuxt.js project. However, you can see that we have added an additional `storyblok` folder. This is the default directory where `storyblok-migrate` looks for component schema definition files. You can change the directory via [a configuration setting](#configuration).
+In the following example you can see a typical file tree of a Nuxt.js project. However, you can see that we have added an additional `storyblok` folder. This is the default directory where `storyblok-migrate` looks for component definition files. You can change the directory via [a configuration setting](#configuration).
 
 ```
 your-storyblok-project/
@@ -31,9 +31,9 @@ your-storyblok-project/
 └── ...
 ```
 
-### Schema definitions
+### Component definitions
 
-In the following two examples you can see how to structure schema definitions. You can read more about how to structure the `schema` part of the definition file and all the possible field types in [the official Storyblok API documentation](https://www.storyblok.com/docs/api/management#core-resources/components/possible-field-types).
+In the following two examples you can see how to structure component definitions. You can read more about how to structure the `schema` part of the definition file and all the possible field types in [the official Storyblok API documentation](https://www.storyblok.com/docs/api/management#core-resources/components/possible-field-types).
 
 The `migrations` property is an optional array with functions you want to run on every migration. It is recommended to either add a condition to prevent a migration from running a second time after it has already done its job, or remove it completely when it is no longer needed. However, for documentation purposes, it is recommended to keep old migrations, but add a condition at the beginning to prevent them from running.
 

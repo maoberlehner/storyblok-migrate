@@ -1,7 +1,7 @@
 {
   "name": "storyblok-migrate",
   "version": "0.0.1",
-  "description": "Storyblok schema migrations",
+  "description": "Storyblok component and content migrations",
   "keywords": [
     "migrate",
     "schema",

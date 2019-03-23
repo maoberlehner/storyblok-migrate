@@ -34,7 +34,7 @@ async function start() {
       enabled: `Yes`,
       initial: 1,
       message: `Do you want to run content migrations?`,
-      name: `migrateContent`,
+      name: `contentMigrations`,
       type: `toggle`,
     },
     {

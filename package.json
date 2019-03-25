@@ -23,7 +23,7 @@
   },
   "devDependencies": {
     "@avalanche/eslint-config": "^3.0.0",
-    "eslint": "^5.15.2",
+    "eslint": "^5.15.3",
     "eslint-plugin-import": "^2.16.0",
     "eslint-plugin-markdown": "^1.0.0"
   },

@@ -22,6 +22,7 @@ function componentByName(name) {
 }
 
 module.exports = {
-  contentTypeComponents,
   componentByName,
+  components,
+  contentTypeComponents,
 };

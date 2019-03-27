@@ -1,6 +1,5 @@
 const config = require(`./config`);
 const discover = require(`./utils/discover`);
-const mapComponent = require(`./utils/map-component`);
 const migrate = require(`./utils/migrate`);
 
 const componentService = require(`./services/component`);
@@ -26,28 +25,28 @@ async function runComponentMigrations({ components }) {
     if (remoteComponent) {
       if (config.dryRun) {
         // eslint-disable-next-line no-console
-        console.info(`${component.displayName} component would've been updated`);
+        console.info(`${component.display_name} component would've been updated`);
         // eslint-disable-next-line no-continue
         continue;
       }
-      const mappedComponent = { id: remoteComponent.id, ...mapComponent(component) };
+      const mappedComponent = { id: remoteComponent.id, ...component };
       // eslint-disable-next-line no-await-in-loop
       await componentService.update({ component: mappedComponent });
       // eslint-disable-next-line no-console
-      console.log(`${component.displayName} component has been updated`);
+      console.log(`${component.display_name} component has been updated`);
       // eslint-disable-next-line no-continue
       continue;
     }
 
     if (config.dryRun) {
       // eslint-disable-next-line no-console
-      console.info(`${component.displayName} component would've been created`);
+      console.info(`${component.display_name} component would've been created`);
       // eslint-disable-next-line no-continue
       continue;
     }
 
     // eslint-disable-next-line no-await-in-loop
-    await componentService.create({ component: mapComponent(component) });
+    await componentService.create({ component });
   }
 }
 

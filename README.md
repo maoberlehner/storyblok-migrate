@@ -42,7 +42,9 @@ The `migrations` property is an optional array with functions you want to run on
 const metaImage = require('./meta-image');
 
 module.exports = {
-  displayName: 'Article',
+  display_name: 'Article',
+  is_nestable: false,
+  is_root: true,
   migrations: [
     // Replace `headline` field with new `title` field.
     ({ content }) => {
@@ -66,17 +68,15 @@ module.exports = {
       type: 'text',
     },
   },
-  settings: {
-    nestable: false,
-    root: true,
-  },
 };
 ```
 
 ```js
 // storyblok/meta-image.js
 module.exports = {
-  displayName: 'Image',
+  display_name: 'Image',
+  is_nestable: true,
+  is_root: false,
   migrations: [
     // Replace `url` field with new `src` field.
     ({ content }) => {
@@ -97,10 +97,6 @@ module.exports = {
       pos: 0,
       type: 'image',
     },
-  },
-  settings: {
-    nestable: true,
-    root: false,
   },
 };
 ```

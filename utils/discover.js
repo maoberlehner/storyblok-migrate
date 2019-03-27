@@ -14,7 +14,7 @@ function findComponents(componentDirectory) {
 const components = findComponents(config.componentDirectory);
 
 function contentTypeComponents() {
-  return components.filter(x => x.settings.root);
+  return components.filter(x => x.is_root);
 }
 
 function componentByName(name) {

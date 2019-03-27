@@ -70,7 +70,7 @@ async function runContentMigrations({ components, page = 1 }) {
 
     if (config.dryRun) {
       // eslint-disable-next-line no-console
-      console.info(`Story ${story.id} would've been updated`);
+      console.info(`Story "${story.id}" would've been updated`);
       // eslint-disable-next-line no-continue
       continue;
     }
@@ -78,7 +78,7 @@ async function runContentMigrations({ components, page = 1 }) {
     // eslint-disable-next-line no-await-in-loop
     await storyService.update({ story });
     // eslint-disable-next-line no-console
-    console.log(`Story ${story.id} has been updated`);
+    console.log(`Story "${story.id}" has been updated`);
   }
 
   if (page >= pageCount) return;

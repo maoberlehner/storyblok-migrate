@@ -125,9 +125,18 @@ Usually you want to run `storyblok-migrate` with paramters as part of your build
 You can also run `storyblok-migrate` manually with parameters.
 
 ```bash
-# Run all migrations.
+# Run all component migrations.
+npx storyblok-migrate --component-migrations
+# Run component migrations only for specific components.
+npx storyblok-migrate --component-migrations --components article,meta_image
+# Using shortcuts.
+npx storyblok-migrate -p -c article,meta_image
+```
+
+```bash
+# Run all content migrations.
 npx storyblok-migrate --content-migrations
-# Run migrations only for specific content types.
+# Run content migrations only for specific content types.
 npx storyblok-migrate --content-migrations --content-types article,product
 # Using shortcuts.
 npx storyblok-migrate -n -t article,product

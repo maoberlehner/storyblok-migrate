@@ -130,7 +130,7 @@ npx storyblok-migrate --content-migrations
 # Run migrations only for specific content types.
 npx storyblok-migrate --content-migrations --content-types article,product
 # Using shortcuts.
-npx storyblok-migrate -c -t article,product
+npx storyblok-migrate -n -t article,product
 ```
 
 ## Configuration

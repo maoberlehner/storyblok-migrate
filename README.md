@@ -33,7 +33,7 @@ your-storyblok-project/
 
 ### Component definitions
 
-In the following two examples you can see how to structure component definitions. You can read more about how to structure the `schema` part of the definition file and all the possible field types in [the official Storyblok API documentation](https://www.storyblok.com/docs/api/management#core-resources/components/possible-field-types).
+Next up you can see how to structure component definitions. You can read more about how to structure the `schema` part of the definition file and all the possible field types in [the official Storyblok API documentation](https://www.storyblok.com/docs/api/management#core-resources/components/possible-field-types).
 
 The `migrations` property is an optional array with functions you want to run on every migration. It is recommended to either add a condition to prevent a migration from running a second time after it has already done its job, or remove it completely when it is no longer needed. However, for documentation purposes, it is recommended to keep old migrations, but add a condition at the beginning to prevent them from running.
 

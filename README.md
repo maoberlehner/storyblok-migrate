@@ -161,7 +161,6 @@ module.exports = {
 
 ### 1.0.0
 
-- Mirror code components to Storyblok
 - Only update stories if they have changed
 - Backup functionality
 

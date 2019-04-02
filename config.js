@@ -1,5 +1,7 @@
 const path = require(`path`);
 
+require(`dotenv`).config();
+
 let customConfig = {};
 try {
   // eslint-disable-next-line global-require, import/no-dynamic-require

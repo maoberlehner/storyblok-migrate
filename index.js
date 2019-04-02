@@ -47,6 +47,8 @@ async function runComponentMigrations({ components }) {
 
     // eslint-disable-next-line no-await-in-loop
     await componentService.create({ component });
+    // eslint-disable-next-line no-console
+    console.log(`${component.display_name} component has been created`);
   }
 }
 

@@ -6,7 +6,7 @@ const config = require(`../config`);
 function findComponents(componentDirectory) {
   const directory = path.resolve(process.cwd(), componentDirectory);
 
-  return glob.sync(path.join(directory, `**`, `*.js`))
+  return glob.sync(path.join(directory, `**`, `[^_]*.js`))
     // eslint-disable-next-line global-require, import/no-dynamic-require
     .map(file => require(path.resolve(directory, file)));
 }

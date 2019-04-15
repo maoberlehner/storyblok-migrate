@@ -178,6 +178,57 @@ module.exports = {
 };
 ```
 
+## Tips & Tricks
+
+### Fragments
+
+You can add files starting with an underscore to your `componentDirectory`, those files will be ignored and not treated as component definition files. You can use those files to sepcify schema fragments which you can reuse in multiple component definition files.
+
+```js
+// storyblok/_meta_image.js
+module.exports = ({ startPos = 0 }) => ({
+  image: {
+    type: 'section',
+    keys: [
+      'image_src',
+      'image_dominant_color',
+      'image_alt',
+      'image_title',
+    ],
+    pos: startPos,
+  },
+  image_src: {
+    type: 'image',
+    pos: startPos + 1,
+  },
+  image_alt: {
+    type: 'text',
+    pos: startPos + 2,
+  },
+  image_title: {
+    type: 'text',
+    pos: startPos + 3,
+  },
+});
+```
+
+```js
+// storyblok/article.js
+const metaImageFragment = require('./_meta_image');
+
+module.exports = {
+  // ...
+  schema: {
+    title: {
+      pos: 0,
+      type: 'text',
+    },
+    ...metaImageFragment({ startPos: 10 }),
+  },
+  // ...
+};
+```
+
 ## Roadmap
 
 ### 1.0.0

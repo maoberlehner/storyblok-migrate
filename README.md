@@ -27,7 +27,7 @@ your-storyblok-project/
 ├── src/
 ├── storyblok
 │   ├── article.js
-│   └── image-slider.js
+│   └── meta_image.js
 └── ...
 ```
 
@@ -39,7 +39,7 @@ The `migrations` property is an optional array with functions you want to run on
 
 ```js
 // storyblok/article.js
-const metaImage = require('./meta-image');
+const metaImage = require('./meta_image');
 
 module.exports = {
   display_name: 'Article',
@@ -72,7 +72,7 @@ module.exports = {
 ```
 
 ```js
-// storyblok/meta-image.js
+// storyblok/meta_image.js
 module.exports = {
   display_name: 'Image',
   is_nestable: true,

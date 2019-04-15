@@ -146,6 +146,23 @@ npx storyblok-migrate --content-migrations --content-types article,product
 npx storyblok-migrate -n -t article,product
 ```
 
+## Helpers
+
+This package also provides some helper commands for your convenience.
+
+### Component export
+
+If you want to export your components from Storyblok in order to use them as a starting point for your component definitions, you can use the `storyblok-component-export` CLI command.
+
+```bash
+# Export all components.
+npx storyblok-component-export
+# Export only specific components.
+npx storyblok-component-export article,product
+```
+
+Running those commands creates new files for those components inside of your `componentDirectory`. **If a component with the same name already exists, it will be overwritten!**
+
 ## Configuration
 
 This is the default configuration. You must not check in your `oauthToken` into version control (especially if the repository is public)! Use environment variables instead.

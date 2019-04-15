@@ -30,6 +30,7 @@
   },
   "main": "index.js",
   "bin": {
+    "storyblok-component-export": "cli-component-export.js",
     "storyblok-migrate": "cli.js"
   },
   "repository": {

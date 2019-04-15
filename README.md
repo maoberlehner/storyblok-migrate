@@ -101,6 +101,10 @@ module.exports = {
 };
 ```
 
+### Using the CLI
+
+Storyblok Migrate is a CLI tool with two modes. You can run it either in UI mode or with parameters.
+
 **Run in UI mode**
 
 When running `storyblok-migrate` in UI mode you'll be asked what migrations you want to run.

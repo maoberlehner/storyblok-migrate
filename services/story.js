@@ -18,7 +18,7 @@ async function list({ contentTypes, page }) {
 }
 
 function update({ story }) {
-  return api.put(`spaces/${spaceId}/stories/${story.id}`, { story });
+  return api.put(`spaces/${spaceId}/stories/${story.id}`, { story, publish: true });
 }
 
 module.exports = {

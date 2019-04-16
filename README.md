@@ -233,12 +233,10 @@ module.exports = {
 
 ### 1.0.0
 
-- Only update stories if they have changed
 - Backup functionality
 
 ### 1.1.0
 
-- Bidirectional synchronization of components
 - Migration versioning
 - Rollbacks
 

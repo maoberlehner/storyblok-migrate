@@ -1,3 +1,6 @@
+const cloneDeep = require(`lodash.clonedeep`);
+const isEqual = require(`lodash.isequal`);
+
 const config = require(`./config`);
 const discover = require(`./utils/discover`);
 const migrate = require(`./utils/migrate`);
@@ -57,7 +60,8 @@ async function runContentMigrations({ components, page = 1 }) {
   const { data, pageCount } = await storyService.list({ contentTypes, page });
 
   // eslint-disable-next-line no-restricted-syntax
-  for (const story of data.stories) {
+  for (const originalStory of data.stories) {
+    const story = cloneDeep(originalStory);
     const componentName = story.content.component;
     const component = discover.componentByName(componentName);
 
@@ -69,6 +73,13 @@ async function runContentMigrations({ components, page = 1 }) {
       component,
       content: story.content,
     });
+
+    if (isEqual(story, originalStory)) {
+      // eslint-disable-next-line no-console
+      console.info(`Story "${story.id}" has not changed and was skipped`);
+      // eslint-disable-next-line no-continue
+      continue;
+    }
 
     if (config.dryRun) {
       // eslint-disable-next-line no-console

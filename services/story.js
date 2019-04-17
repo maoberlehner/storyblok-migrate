@@ -15,9 +15,9 @@ async function getMultiple({ ids }) {
   return storyResponses;
 }
 
-async function list({ contentTypes, page }) {
+async function list({ contentTypes, page } = {}) {
   const response = await api.get(`spaces/${spaceId}/stories`, {
-    filter_query: {
+    filter_query: contentTypes && {
       component: {
         in: contentTypes.join(`,`),
       },

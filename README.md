@@ -150,6 +150,21 @@ npx storyblok-migrate -n -t article,product
 
 This package also provides some helper commands for your convenience.
 
+### Backup
+
+In order to create a backup of your stories and components, you can use the following commands.
+
+```bash
+# Backup all components.
+npx storyblok-backup --components
+# Backup all stories.
+npx storyblok-backup --stories
+# Backup everything.
+npx storyblok-backup --components --stories
+```
+
+You can change the location where backups should be saved by changing the `backupDirectory` [configuration option](#configuration).
+
 ### Component export
 
 If you want to export your components from Storyblok in order to use them as a starting point for your component definitions, you can use the `storyblok-component-export` CLI command.
@@ -171,6 +186,7 @@ This is the default configuration. You must not check in your `oauthToken` into 
 // storyblok.config.js
 module.exports = {
   componentDirectory: 'storyblok',
+  backupDirectory: 'backup',
   dryRun: process.argv.includes('--dry-run'),
   oauthToken: process.env.STORYBLOK_OAUTH_TOKEN,
   spaceId: process.env.STORYBLOK_SPACE_ID,

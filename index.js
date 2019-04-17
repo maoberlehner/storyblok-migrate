@@ -7,6 +7,7 @@ const migrate = require(`./utils/migrate`);
 
 const componentService = require(`./services/component`);
 const storyService = require(`./services/story`);
+const unpaginate = require(`./utils/unpaginate`);
 
 if (config.dryRun) {
   // eslint-disable-next-line no-console
@@ -55,12 +56,13 @@ async function runComponentMigrations({ components }) {
   }
 }
 
-async function runContentMigrations({ components, page = 1 }) {
+async function runContentMigrations({ components }) {
   const contentTypes = contentTypesFromComponents(components);
-  const { data, pageCount } = await storyService.list({ contentTypes, page });
+  const storyPages = await unpaginate({ cb: storyService.list, params: { contentTypes } });
+  const stories = storyPages.reduce((prev, next) => [...prev, ...next.stories], []);
 
   // eslint-disable-next-line no-restricted-syntax
-  for (const originalStory of data.stories) {
+  for (const originalStory of stories) {
     const story = cloneDeep(originalStory);
     const componentName = story.content.component;
     const component = discover.componentByName(componentName);
@@ -93,10 +95,6 @@ async function runContentMigrations({ components, page = 1 }) {
     // eslint-disable-next-line no-console
     console.log(`Story "${story.id}" has been updated`);
   }
-
-  if (page >= pageCount) return;
-
-  await runContentMigrations({ components, page: page + 1 });
 }
 
 module.exports = {

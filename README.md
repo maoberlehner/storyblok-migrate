@@ -170,7 +170,6 @@ This is the default configuration. You must not check in your `oauthToken` into 
 ```js
 // storyblok.config.js
 module.exports = {
-  accessToken: process.env.STORYBLOK_ACCESS_TOKEN,
   componentDirectory: 'storyblok',
   dryRun: process.argv.includes('--dry-run'),
   oauthToken: process.env.STORYBLOK_OAUTH_TOKEN,

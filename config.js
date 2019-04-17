@@ -11,7 +11,6 @@ try {
 }
 
 const defaultConfig = {
-  accessToken: process.env.STORYBLOK_ACCESS_TOKEN,
   componentDirectory: `storyblok`,
   dryRun: process.argv.includes(`--dry-run`),
   oauthToken: process.env.STORYBLOK_OAUTH_TOKEN,

@@ -18,7 +18,7 @@ Storyblok component and content migrations.
 npm install storyblok-migrate
 ```
 
-In the following example you can see a typical file tree of a Nuxt.js project. However, you can see that we have added an additional `storyblok` folder. This is the default directory where `storyblok-migrate` looks for component definition files. You can change the directory via [a configuration setting](#configuration).
+In the following example you can see a typical file tree of a Storyblok website project. However, you can see that we have added an additional `storyblok` folder. This is the default directory where `storyblok-migrate` looks for component definition files. You can change the directory via [a configuration setting](#configuration).
 
 ```
 your-storyblok-project/

@@ -131,6 +131,7 @@ async function start() {
   if (!confirm || !migrateAnything) {
     // eslint-disable-next-line no-console
     console.log(`Migration canceled.`);
+    return;
   }
 
   if (componentMigrations) {

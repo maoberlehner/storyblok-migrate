@@ -16,20 +16,29 @@ async function start() {
     )
     .parse(process.argv);
 
-  const { data } = await componentService.list();
-  data.components
-    .filter(x => (commander.components ? commander.components.includes(x.name) : true))
-    .forEach((component) => {
-      const filePath = path.resolve(process.cwd(), componentDirectory, `${component.name}.js`);
-      // eslint-disable-next-line camelcase
-      const { created_at, id, ...cleanComponent } = component;
-      const fileContent = `module.exports = ${JSON.stringify(cleanComponent, null, 2)}`;
-      fs.writeFile(filePath, fileContent, { flag: `w` }, (error) => {
-        if (error) throw error;
+  try {
+    const { data } = await componentService.list();
+
+    const directory = path.resolve(process.cwd(), componentDirectory);
+    await fs.promises.mkdir(directory, { recursive: true });
+
+    data.components
+      .filter(x => (commander.components ? commander.components.includes(x.name) : true))
+      .forEach(async (component) => {
+        const fileName = `${component.name}.js`;
+        const fullPath = path.join(directory, fileName);
+        // eslint-disable-next-line camelcase
+        const { created_at, id, ...cleanComponent } = component;
+        const fileContent = `module.exports = ${JSON.stringify(cleanComponent, null, 2)}`;
+
+        await fs.promises.writeFile(fullPath, fileContent, { flag: `w` });
+
         // eslint-disable-next-line no-console
         console.log(`Successfully exported component "${component.name}".`);
       });
-    });
+  } catch (error) {
+    throw error;
+  }
 }
 
 start();

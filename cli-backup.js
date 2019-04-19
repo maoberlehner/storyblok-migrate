@@ -23,29 +23,43 @@ async function start() {
     .parse(process.argv);
 
   const date = new Date().toISOString().split(`.`)[0].replace(/:/g, ``);
+  const directory = path.resolve(process.cwd(), backupDirectory);
 
   if (commander.components) {
-    const { data } = await componentService.list();
-    const filePath = path.resolve(process.cwd(), backupDirectory, `components_${date}.json`);
-    const fileContent = JSON.stringify(data, null, 2);
-    fs.writeFile(filePath, fileContent, { flag: `w` }, (error) => {
-      if (error) throw error;
+    try {
+      const { data } = await componentService.list();
+      const fileName = `components_${date}.json`;
+      const fullPath = path.join(directory, fileName);
+      const fileContent = JSON.stringify(data, null, 2);
+
+      await fs.promises.mkdir(directory, { recursive: true });
+      await fs.promises.writeFile(fullPath, fileContent, { flag: `w` });
+
       // eslint-disable-next-line no-console
       console.log(`Successfully created a backup of all of your components.`);
-    });
+    } catch (error) {
+      throw error;
+    }
   }
 
   if (commander.stories) {
-    const storyPages = await unpaginate({ cb: storyService.list });
-    storyPages.forEach((data, page) => {
-      const filePath = path.resolve(process.cwd(), backupDirectory, `stories_${date}_${page + 1}.json`);
-      const fileContent = JSON.stringify(data, null, 2);
-      fs.writeFile(filePath, fileContent, { flag: `w` }, (error) => {
-        if (error) throw error;
+    try {
+      const storyPages = await unpaginate({ cb: storyService.list });
+      await fs.promises.mkdir(directory, { recursive: true });
+
+      storyPages.forEach(async (data, page) => {
+        const fileName = `stories_${date}_${page + 1}.json`;
+        const fullPath = path.join(directory, fileName);
+        const fileContent = JSON.stringify(data, null, 2);
+
+        await fs.promises.writeFile(fullPath, fileContent, { flag: `w` });
+
         // eslint-disable-next-line no-console
         console.log(`Successfully created a backup of all stories of page ${page + 1} of ${storyPages.length}.`);
       });
-    });
+    } catch (error) {
+      throw error;
+    }
   }
 }
 

@@ -5,7 +5,9 @@
 [![Build Status](https://travis-ci.org/maoberlehner/storyblok-migrate.svg?branch=master)](https://travis-ci.org/maoberlehner/storyblok-migrate)
 [![GitHub stars](https://img.shields.io/github/stars/maoberlehner/storyblok-migrate.svg?style=social&label=Star)](https://github.com/maoberlehner/storyblok-migrate)
 
-Storyblok component and content migrations.
+> Storyblok component and content migrations.
+
+[![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/O4O7U55Y)
 
 > **Warning:** this project is at a very early stage. Due to the nature of what this package does, it has the potential to destroy all your content. It is strongly recommended that you backup your Storyblok Space before use. Use at your own risk.
 

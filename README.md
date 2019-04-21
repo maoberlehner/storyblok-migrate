@@ -1,4 +1,4 @@
-# Storyblok Migrate
+# storyblok-migrate
 
 [![Patreon](https://img.shields.io/badge/patreon-donate-blue.svg)](https://www.patreon.com/maoberlehner)
 [![Donate](https://img.shields.io/badge/Donate-PayPal-blue.svg)](https://paypal.me/maoberlehner)
@@ -105,7 +105,7 @@ module.exports = {
 
 ### Using the CLI
 
-Storyblok Migrate is a CLI tool with two modes. You can run it either in UI mode or with parameters.
+`storyblok-migrate` is a CLI tool with two modes. You can run it either in UI mode or with parameters.
 
 **Run in UI mode**
 

@@ -252,6 +252,7 @@ module.exports = {
 
 - Migration versioning
 - Rollbacks
+- Import content from third party sources
 
 ## About
 

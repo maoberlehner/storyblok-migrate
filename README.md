@@ -58,16 +58,16 @@ module.exports = {
   ],
   name: 'article',
   schema: {
+    title: {
+      pos: 0,
+      type: 'text',
+    },
     image: {
       component_whitelist: [metaImage.name],
       maximum: 1,
       pos: 10,
       restrict_components: true,
       type: 'bloks',
-    },
-    title: {
-      pos: 0,
-      type: 'text',
     },
   },
 };
@@ -90,14 +90,14 @@ module.exports = {
   ],
   name: 'meta_image',
   schema: {
-    alt: {
-      pos: 10,
-      type: 'text',
-    },
     src: {
       maximum: 1,
       pos: 0,
       type: 'image',
+    },
+    alt: {
+      pos: 10,
+      type: 'text',
     },
   },
 };

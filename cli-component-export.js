@@ -37,7 +37,9 @@ async function start() {
         console.log(`Successfully exported component "${component.name}".`);
       });
   } catch (error) {
-    throw error;
+    // eslint-disable-next-line no-console
+    console.error(error);
+    process.exit(1);
   }
 }
 

@@ -38,7 +38,9 @@ async function start() {
       // eslint-disable-next-line no-console
       console.log(`Successfully created a backup of all of your components.`);
     } catch (error) {
-      throw error;
+      // eslint-disable-next-line no-console
+      console.error(error);
+      process.exit(1);
     }
   }
 
@@ -58,7 +60,9 @@ async function start() {
         console.log(`Successfully created a backup of all stories of page ${page + 1} of ${storyPages.length}.`);
       });
     } catch (error) {
-      throw error;
+      // eslint-disable-next-line no-console
+      console.error(error);
+      process.exit(1);
     }
   }
 }

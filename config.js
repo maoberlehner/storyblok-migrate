@@ -8,6 +8,7 @@ try {
   customConfig = require(path.resolve(process.cwd(), `storyblok.config`));
 } catch (error) {
   // It is ok to have no custom config.
+  if (error.code !== `MODULE_NOT_FOUND`) throw error;
 }
 
 const defaultConfig = {

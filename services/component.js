@@ -22,8 +22,13 @@ function update({ component }) {
   });
 }
 
+function createOrUpdate({ component }) {
+  return component.id ? update({ component }) : create({ component });
+}
+
 module.exports = {
   create,
+  createOrUpdate,
   list,
   update,
 };

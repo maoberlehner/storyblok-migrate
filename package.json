@@ -33,6 +33,7 @@
   "main": "index.js",
   "bin": {
     "storyblok-backup": "cli-backup.js",
+    "storyblok-backup-restore": "cli-backup-restore.js",
     "storyblok-component-export": "cli-component-export.js",
     "storyblok-migrate": "cli.js"
   },

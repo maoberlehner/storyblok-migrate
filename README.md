@@ -167,6 +167,17 @@ npx storyblok-backup --components --stories
 
 You can change the location where backups should be saved by changing the `backupDirectory` [configuration option](#configuration).
 
+### Restore
+
+You can also use the `storyblok-backup-restore` command to restore previously created backups.
+
+```bash
+# Restore components from a backup.
+npx storyblok-backup-restore backup/components_2019-04-19T032721.json
+# Restore stories from a backup.
+npx storyblok-backup-restore backup/stories_2019-04-19T032721_1.json
+```
+
 ### Component export
 
 If you want to export your components from Storyblok in order to use them as a starting point for your component definitions, you can use the `storyblok-component-export` CLI command.

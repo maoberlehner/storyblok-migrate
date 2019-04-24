@@ -32,11 +32,21 @@ async function list({ contentTypes, page } = {}) {
   return { pageCount, ...response };
 }
 
+function create({ story }) {
+  return api.post(`spaces/${spaceId}/stories`, { story });
+}
+
 function update({ story }) {
   return api.put(`spaces/${spaceId}/stories/${story.id}`, { story, publish: true });
 }
 
+function createOrUpdate({ story }) {
+  return story.id ? update({ story }) : create({ story });
+}
+
 module.exports = {
+  create,
+  createOrUpdate,
   get,
   list,
   update,

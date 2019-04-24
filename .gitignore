@@ -26,4 +26,9 @@ nbproject
 Thumbs.db
 
 # Folders to ignore
+backup
 node_modules
+storyblok
+
+# Files to ignore
+storyblok.config.js

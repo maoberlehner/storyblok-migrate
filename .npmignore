@@ -1,3 +1,7 @@
+backup
+node_modules
+storyblok
+
 .editorconfig
 .eslintrc-md.js
 .eslintrc.js
@@ -5,3 +9,4 @@
 
 CODE_OF_CONDUCT.md
 CONTRIBUTING.md
+storyblok.config.js

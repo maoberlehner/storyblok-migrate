@@ -8,15 +8,15 @@ const { version } = require(`./package`);
 const componentService = require(`./services/component`);
 
 async function start() {
-  commander
-    .version(version)
-    .option(
-      `-c, --components <items>`,
-      `comma separated list of components which you want to export from storyblok`,
-    )
-    .parse(process.argv);
-
   try {
+    commander
+      .version(version)
+      .option(
+        `-c, --components <items>`,
+        `comma separated list of components which you want to export from storyblok`,
+      )
+      .parse(process.argv);
+
     const { data } = await componentService.list();
 
     const directory = path.resolve(process.cwd(), componentDirectory);

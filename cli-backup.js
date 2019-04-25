@@ -10,23 +10,23 @@ const storyService = require(`./services/story`);
 const unpaginate = require(`./utils/unpaginate`);
 
 async function start() {
-  commander
-    .version(version)
-    .option(
-      `-c, --components`,
-      `create a backup of all components`,
-    )
-    .option(
-      `-s, --stories`,
-      `create a backup of all stories`,
-    )
-    .parse(process.argv);
+  try {
+    commander
+      .version(version)
+      .option(
+        `-c, --components`,
+        `create a backup of all components`,
+      )
+      .option(
+        `-s, --stories`,
+        `create a backup of all stories`,
+      )
+      .parse(process.argv);
 
-  const date = new Date().toISOString().split(`.`)[0].replace(/:/g, ``);
-  const directory = path.resolve(process.cwd(), backupDirectory);
+    const date = new Date().toISOString().split(`.`)[0].replace(/:/g, ``);
+    const directory = path.resolve(process.cwd(), backupDirectory);
 
-  if (commander.components) {
-    try {
+    if (commander.components) {
       const { data } = await componentService.list();
       const fileName = `components_${date}.json`;
       const fullPath = path.join(directory, fileName);
@@ -37,15 +37,9 @@ async function start() {
 
       // eslint-disable-next-line no-console
       console.log(`Successfully created a backup of all of your components.`);
-    } catch (error) {
-      // eslint-disable-next-line no-console
-      console.error(error);
-      process.exit(1);
     }
-  }
 
-  if (commander.stories) {
-    try {
+    if (commander.stories) {
       const storyPages = await unpaginate({ cb: storyService.list });
       await fs.promises.mkdir(directory, { recursive: true });
 
@@ -59,11 +53,11 @@ async function start() {
         // eslint-disable-next-line no-console
         console.log(`Successfully created a backup of all stories of page ${page + 1} of ${storyPages.length}.`);
       });
-    } catch (error) {
-      // eslint-disable-next-line no-console
-      console.error(error);
-      process.exit(1);
     }
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.error(error);
+    process.exit(1);
   }
 }
 

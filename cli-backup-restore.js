@@ -6,7 +6,6 @@ const { version } = require(`./package`);
 const componentService = require(`./services/component`);
 const config = require(`./config`);
 const storyService = require(`./services/story`);
-// const unpaginate = require(`./utils/unpaginate`);
 
 async function start() {
   commander

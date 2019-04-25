@@ -18,16 +18,13 @@ async function start() {
   const file = require(filePath);
 
   if (file.components) {
-    // eslint-disable-next-line no-restricted-syntax
     for (const component of file.components) {
       if (config.dryRun) {
         // eslint-disable-next-line no-console
         console.info(`Component "${component.display_name}" would've been restored`);
-        // eslint-disable-next-line no-continue
         continue;
       }
 
-      // eslint-disable-next-line no-await-in-loop
       await componentService.createOrUpdate({ component });
       // eslint-disable-next-line no-console
       console.info(`Restored component "${component.display_name}"`);
@@ -35,16 +32,13 @@ async function start() {
   }
 
   if (file.stories) {
-    // eslint-disable-next-line no-restricted-syntax
     for (const story of file.stories) {
       if (config.dryRun) {
         // eslint-disable-next-line no-console
         console.info(`Story "${story.name}" would've been restored`);
-        // eslint-disable-next-line no-continue
         continue;
       }
 
-      // eslint-disable-next-line no-await-in-loop
       await storyService.createOrUpdate({ story });
       // eslint-disable-next-line no-console
       console.info(`Restored story "${story.name}"`);

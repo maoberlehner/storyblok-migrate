@@ -7,9 +7,7 @@ function get({ id }) {
 
 async function getMultiple({ ids }) {
   const storyResponses = [];
-  // eslint-disable-next-line no-restricted-syntax
   for (const id of ids) {
-    // eslint-disable-next-line no-await-in-loop
     storyResponses.push(await get({ id }));
   }
   return storyResponses;

@@ -32,7 +32,7 @@ async function start() {
       const filteredComponents = commander.components
         ? components.filter(x => commander.components.includes(x.name))
         : components;
-      runComponentMigrations({ components: filteredComponents });
+      await runComponentMigrations({ components: filteredComponents });
     }
 
     const contentTypeComponents = discover.contentTypeComponents();
@@ -41,8 +41,7 @@ async function start() {
       const filteredComponents = commander.contentTypes
         ? contentTypeComponents.filter(x => commander.contentTypes.includes(x.name))
         : contentTypeComponents;
-      runContentMigrations({ components: filteredComponents });
-      return;
+      await runContentMigrations({ components: filteredComponents });
     }
 
     const questions = [

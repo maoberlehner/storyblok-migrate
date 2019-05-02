@@ -35,7 +35,7 @@ function create({ story }) {
 }
 
 function update({ story }) {
-  return api.put(`spaces/${spaceId}/stories/${story.id}`, { story, publish: true });
+  return api.put(`spaces/${spaceId}/stories/${story.id}`, { story, publish: story.published });
 }
 
 function createOrUpdate({ story }) {

@@ -44,6 +44,10 @@ async function start() {
       await runContentMigrations({ components: filteredComponents });
     }
 
+    if (commander.componentMigrations || commander.contentMigrations) {
+      return;
+    }
+
     const questions = [
       {
         disabled: `No`,

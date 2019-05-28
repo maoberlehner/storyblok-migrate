@@ -69,11 +69,11 @@ async function start() {
         type: `toggle`,
       },
       {
-        choices: components.map(x => x.display_name),
+        choices: components.map(x => x.display_name || x.name),
         message: `Which components do you want to migrate?`,
         name: `selectedComponents`,
         result(value) {
-          return components.filter(x => value.includes(x.display_name));
+          return components.filter(x => value.includes(x.display_name || x.name));
         },
         skip() {
           return this.state.answers.allComponents;
@@ -100,11 +100,11 @@ async function start() {
         type: `toggle`,
       },
       {
-        choices: contentTypeComponents.map(x => x.display_name),
+        choices: contentTypeComponents.map(x => x.display_name || x.name),
         message: `Which content types do you want to migrate?`,
         name: `selectedContentTypeComponents`,
         result(value) {
-          return contentTypeComponents.filter(x => value.includes(x.display_name));
+          return contentTypeComponents.filter(x => value.includes(x.display_name || x.name));
         },
         skip() {
           return this.state.answers.allContentTypes;

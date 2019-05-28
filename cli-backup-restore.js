@@ -21,13 +21,13 @@ async function start() {
       for (const component of file.components) {
         if (config.dryRun) {
           // eslint-disable-next-line no-console
-          console.info(`Component "${component.display_name}" would've been restored`);
+          console.info(`Component "${component.display_name || component.name}" would've been restored`);
           continue;
         }
 
         await componentService.createOrUpdate({ component });
         // eslint-disable-next-line no-console
-        console.info(`Restored component "${component.display_name}"`);
+        console.info(`Restored component "${component.display_name || component.name}"`);
       }
     }
 

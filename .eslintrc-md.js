@@ -4,7 +4,7 @@ module.exports = {
   rules: {
     'no-param-reassign': `off`,
     quotes: [2, `single`, { avoidEscape: true }],
-    'import/no-extraneous-dependencies': false,
-    'import/no-unresolved': false,
+    'import/no-extraneous-dependencies': `off`,
+    'import/no-unresolved': `off`,
   },
 };

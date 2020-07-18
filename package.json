@@ -16,19 +16,19 @@
     "lint": "yarn run lint:scripts && yarn run lint:scripts-md"
   },
   "dependencies": {
-    "commander": "^3.0.1",
-    "dotenv": "^8.1.0",
-    "enquirer": "^2.3.1",
-    "glob": "^7.1.4",
+    "commander": "^5.1.0",
+    "dotenv": "^8.2.0",
+    "enquirer": "^2.3.6",
+    "glob": "^7.1.6",
     "lodash.clonedeep": "^4.5.0",
     "lodash.isequal": "^4.5.0",
-    "storyblok-js-client": "^2.0.1"
+    "storyblok-js-client": "^2.5.1"
   },
   "devDependencies": {
     "@avalanche/eslint-config": "^4.0.0",
-    "eslint": "^6.3.0",
-    "eslint-plugin-import": "^2.18.2",
-    "eslint-plugin-markdown": "^1.0.0"
+    "eslint": "^7.5.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-markdown": "^1.0.2"
   },
   "main": "index.js",
   "bin": {

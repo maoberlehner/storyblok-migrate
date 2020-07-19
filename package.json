@@ -1,6 +1,6 @@
 {
   "name": "storyblok-migrate",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "description": "Component and content migrations for the headless CMS Storyblok",
   "keywords": [
     "migrate",

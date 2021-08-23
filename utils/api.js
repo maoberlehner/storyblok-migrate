@@ -1,7 +1,12 @@
 const StoryblokClient = require(`storyblok-js-client`);
 
-const { oauthToken } = require(`../config`);
+const { oauthToken, proxy, https, httpsAgent } = require(`../config`);
 
-module.exports = new StoryblokClient({
+const sbcConfig = {
   oauthToken,
-});
+  proxy,
+  https,
+  httpsAgent,
+};
+
+module.exports = new StoryblokClient(sbcConfig);

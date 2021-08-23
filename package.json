@@ -22,7 +22,7 @@
     "glob": "^7.1.6",
     "lodash.clonedeep": "^4.5.0",
     "lodash.isequal": "^4.5.0",
-    "storyblok-js-client": "^2.5.1"
+    "storyblok-js-client": "git+https://github.com/mbr74/storyblok-js-client.git#feature\/new-https-proxy-agent-option-for-axios"
   },
   "devDependencies": {
     "@avalanche/eslint-config": "^4.0.0",

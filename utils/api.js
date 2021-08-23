@@ -8,6 +8,5 @@ const sbcConfig = {
   https,
   httpsAgent,
 };
-console.info('ECHO: sbcConfig :=', sbcConfig);
 
 module.exports = new StoryblokClient(sbcConfig);
